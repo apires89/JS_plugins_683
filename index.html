@@ -6,22 +6,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body>
+    <div class="container" data-controller="disable-button">
+        <h1>Stimulus</h1>
+        <button id="clickme" class="btn btn-primary btn-lg" data-disable-button-target="button" data-action="click->disable-button#disable">
+          Click me!
+        </button>
+        <a class="d-none ml-2" data-disable-button-target="link">Reset</a>
+    </div>
     <div class="container text-center">
-      <form id="search-movies" class="form-inline">
+      <form id="search-movies" class= "form-inline" style="display:block">
         <input id="query" type="text" class="form-control ml-auto" placeholder="Find Movies!">
         <input type="submit" class="btn btn-primary" value="Search">
       </form>
-      <form id="algolia-form" class="form-inline">
-        <input id="algolia-query" type="text" class="form-control ml-auto" placeholder="Find a Location!">
-        <input type="submit" class="btn btn-primary" value="Search">
-      </form>
-      <button style="display:none" class="btn btn-primary" id="click-me">Click me!</button>
       <ul id="results" style="margin-top: 40vh; text-align: center; font: normal 24px monospace;">
       </ul>
     </div>
 
 
     <!-- Add some HTML in here -->
+    <style>
+      #results li {
+  cursor: grab;
+}
+
+#results li:active {
+  cursor: grabbing;
+}
+
+#results li.ghost {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+    </style>
 
     <script src="main.js"></script>
   </body>
